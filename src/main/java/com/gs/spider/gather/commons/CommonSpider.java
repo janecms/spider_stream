@@ -473,7 +473,7 @@ public class CommonSpider extends AsyncGather {
     }
 
     /**
-     * 测试爬虫模板
+     * 测试爬虫模板(直接返回页面）
      *
      * @param info
      * @return
@@ -483,7 +483,8 @@ public class CommonSpider extends AsyncGather {
         final String uuid = UUID.randomUUID().toString();
         Task task = taskManager.initTask(uuid, info.getDomain(), info.getCallbackURL(), "spiderInfoId=" + info.getId() + "&spiderUUID=" + uuid);
         task.addExtraInfo("spiderInfo", info);
-        QueueScheduler queueScheduler = new QueueScheduler();
+        QueueScheduler queueScheduler = new QueueScheduler();//调度
+        //爬虫
         MySpider spider = (MySpider) makeSpider(info, task)
                 .addPipeline(resultItemsCollectorPipeline)
                 .setScheduler(queueScheduler);

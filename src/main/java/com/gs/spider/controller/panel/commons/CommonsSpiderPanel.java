@@ -58,7 +58,9 @@ public class CommonsSpiderPanel extends BaseController {
      * @return
      */
     @RequestMapping(value = {"list", ""}, method = RequestMethod.GET)
-    public ModelAndView list(@RequestParam(required = false) String query, @RequestParam(required = false) String domain, @RequestParam(defaultValue = "1", required = false) int page) {
+    public ModelAndView list(@RequestParam(required = false) String query,
+                             @RequestParam(required = false) String domain,
+                             @RequestParam(defaultValue = "1", required = false) int page) {
         ModelAndView modelAndView = new ModelAndView("panel/commons/list");
         StringBuilder sbf = new StringBuilder();
         sbf.append("&query=");
@@ -79,7 +81,11 @@ public class CommonsSpiderPanel extends BaseController {
             tp.checkAgain();
             tp.setOtherParam(sbf.toString());
         }
-        modelAndView.addObject("tablePage", tp).addObject("resultBundle", resultBundle.getResult().getKey());
+        modelAndView.addObject("query",query);
+        modelAndView.addObject("domain",domain);
+        modelAndView.addObject("tablePage", tp);
+        List<Webpage> webpages = resultBundle.getResult().getKey();
+        modelAndView.addObject("webpages", webpages);
         return modelAndView;
     }
 
@@ -101,7 +107,7 @@ public class CommonsSpiderPanel extends BaseController {
      *
      * @return
      */
-    @RequestMapping(value = "tasks", method = RequestMethod.GET)
+    @RequestMapping(value = "/tasks", method = RequestMethod.GET)
     public ModelAndView tasks(@RequestParam(required = false, defaultValue = "false") boolean showRunning) {
         ModelAndView modelAndView = new ModelAndView("panel/commons/listTasks");
         ResultListBundle<Task> listBundle;
