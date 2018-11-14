@@ -10,3 +10,7 @@ git@github.com:gsh199449/spider.git
 ##  Roadmap
 
 - 接入spring boot stream 
+## 涉及技术
+
+- [webmagic](https://webmagic.io/)
+- [elasticsearch](https://www.elastic.co/guide/en/elasticsearch/client/java-api/index.html)

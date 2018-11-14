@@ -1,7 +1,7 @@
 {
-  "esHost": "localhost",
+  "esHost": "39.107.152.77",
   "esPort": 9300,
-  "esClusterName": "elasticsearch",
+  "esClusterName": "yml_es612_cluster",
   "commonsIndex": "commons",
   "maxHttpDownloadLength": 1048576,
   "commonsSpiderDebug": false,
